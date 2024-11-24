@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Employee Management</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <div class="container">
+      <h1>Employee Data</h1>
+      <form action="/generate" method="POST">
+        <button type="submit" class="btn">Generate Data</button>
+      </form>
+      <table>
+        <thead>
+          <tr>
+            <th>Sr No</th>
+            <th>Name</th>
+            <th>Salary</th>
+            <th>Language</th>
+            <th>City</th>
+            <th>Manager</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% 
+          if(employees.length > 0){ 
+            sr_no=1;
+            employees.forEach(employee =>{ %>
+          <tr>
+            <td><%= sr_no++ %></td>
+            <td><%= employee.name %></td>
+            <td><%= employee.salary %></td>
+            <td><%= employee.language %></td>
+            <td><%= employee.city %></td>
+            <td><%= (employee.isManager==true) ? "Yes" : "No" %></td>
+          </tr>
+          <% })}; %>
+        </tbody>
+      </table>
+      <!-- <button class="btn-green">Yes</button>
+      <button class="btn-danger">No</button> -->
+    </div>
+  </body>
+</html>
